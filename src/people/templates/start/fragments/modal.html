@@ -1,0 +1,54 @@
+  <!-- Modal -->
+  <div class="modal fade" id="recordModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="recordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div id="modal-header" class="modal-header">
+                <div id="logo-modal" class="logo-modal"></div>
+                <h3 class="modal-title" id="recordModalLabel">Información en Registro Individual</h3>
+            </div>
+            <div class="modal-body">
+                <h5>Datos Personales</h5>
+                <ul id="personal">
+                    <li id="ns"></li>
+                    <li id="lns"></li>
+                    <li id="sex"></li>
+                    <li id="cy" class='hijos'></li>
+                </ul>
+
+                <hr>
+
+                <h5>Información de Evento</h5>
+                <ul id="evento">
+                    <li id="typ"></li>
+                    <li id="yy"></li>
+                    <li id="ct"></li>
+                    <li id="st"></li>
+                </ul>
+
+                <hr>
+
+                <h5>Parientes</h5>
+                <ul id="padres">
+                    <li id="papa">Padre: Sin identificar</li>
+                    <li id="mama">Madre: Sin identificar</li>
+                </ul>
+
+
+                <div id='mishijos' class='hijos'>
+                    <hr>
+                    <h5>Hijos</h5>
+                    <div id="children">
+                        <table id="hijos">
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="btn_image" type="button" class="btn btn-success"></button>
+                <button id="closeModal" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>

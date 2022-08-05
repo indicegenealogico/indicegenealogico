@@ -1,0 +1,76 @@
+{% load humanize %}
+{% load static %}
+<nav class="navbar navbar-default navbar-fixed-top navbar-expand-sm bg-dark navbar-dark" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      
+      
+      {% if user.is_authenticated %}
+        <a class="navbar-brand" style="margin-top: -8px" href="{% url 'people.index' %}"><img src="{% static 'start/img/favicon/android-chrome-512x512.png' %}" alt="Company Logo" style="width:40px;" class="rounded-pill"></a>
+        <p class="navbar-text hidden-xs hidden-sm">Base de Datos con {{ list|length|intcomma }} people</p>
+      {% else%}
+        <a class="navbar-brand" href="{% url 'people.index' %}"><img src="{% static 'start/img/favicon/android-chrome-512x512.png' %}" alt="Company Logo" style="width:40px;" class="rounded-pill">    Indice Genealogico</a>
+
+      {% endif %}
+      <button type="button" class="navbar-toggler navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse" aria-controls="navbar-ex1-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <div class="navbar-right">
+        <ul class="nav navbar-nav">
+          {% if user.is_authenticated %}
+            <li>
+              <form class="navbar-form">
+                <div class="form-group" style="min-width: 320px;">
+                  <select name="person" id="person" class="form-control" style="width: 100%;" data-placeholder="Buscar persona&hellip;">
+                    <option></option>
+                    {% for person in list %}
+                      <option value="{{ person.id }}">{{ person.name }}{% if person.date_of_birth %}|{{ person.date_of_birth|date:"Y" }}{% endif %}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <a href="{% url 'add_person' %}" title="Agregar Persona" class="btn btn-primary">
+                  <span class="glyphicon glyphicon-plus"></span> <span class="hidden-sm hidden-md hidden-lg">Agregar Persona</span>
+                </a>
+              </form>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.get_full_name }} <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                {% if user.person %}
+                  <li class="dropdown-header">Yo</li>
+                  <li><a href="{% url 'person' user.person.id %}">Mi Perfil</a></li>
+                  <li><a href="{% url 'ring_chart' user.person.id %}">Mis Antepasados</a></li>
+                  <li role="presentation" class="divider"></li>
+                {% endif %}
+                {% if user.is_staff %}
+                  <li><a href="{% url 'admin:index' %}" title="Admin">Administración</a></li>
+                {% endif %}
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+              </ul>
+            </li>
+          {% else %}
+            <li class="nav-item active"><a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'nombres' %}">Nombres</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'apellidos' %}">Apellidos</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Centros HF
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="https://www.facebook.com/distrito.carupano.7" target="_blank">Carupano</a>
+                <a class="dropdown-item disabled" href="#" target="_blank" aria-disabled="true">Nueva Esparta</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item  disabled" href="#" target="_blank" aria-disabled="true">San Luis Potosi</a>
+                </div>                            
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Ingresar</a></li>
+            
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,7 @@
+{% load static %}
+
+<span class="location">
+  <a href="{% url 'location' location.id %}">{{ location.name }}, <wbr/>{{ location.county_state_province }}</a>
+  <img src="{% get_static_prefix %}people/images/flags/small/{{ location.country.country_code }}.png"
+       alt="{{ location.country }}" class="flag-small"/>
+</span>

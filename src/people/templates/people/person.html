@@ -1,0 +1,81 @@
+{% extends "people/base.html" %}
+
+{% load static %}
+
+{% block title %}{{ person.name }}{% endblock %}
+{% block head %}
+  <style>
+    .divorced {text-decoration: line-through;}
+    tr.flatten td {border-top: 0 !important; padding-top: 0 !important;}
+    .nowrap {white-space: nowrap;}
+    .tree-span {width: calc(50% + 15px); height: 10px; margin: -3px auto 8px auto; border: 1px solid #98978b; border-bottom: 0px;}
+    .tree-root {width: 25%; display: inline-block; margin: 0 7.5px;}
+    
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% if expanded_relationship %}
+    {% include 'people/fragments/relationship.html' with relationship=expanded_relationship description=relationship %}
+  {% endif %}
+  <h1 class="page-header">
+    {% if user.is_staff %}
+      <a href="{% url 'edit_person' person.id %}" class="pull-right btn btn-primary" title="Edit">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </a>
+    {% endif %}
+    {{ person.forename }} {{ person.middle_names }}
+    {% if person.known_as %}"{{ person.known_as }}"{% endif %}
+    <a href="{% url 'surname' person.surname %}">{{ person.surname|upper }}</a>
+    {% if person.maiden_name %}
+      <small>(n&eacute;e <a href="{% url 'surname' person.maiden_name %}">{{ person.maiden_name }}</a>)</small>
+    {% endif %}
+
+    {% if relationship %}
+      <br/><small>{{ relationship }}</small>
+      <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#show_relationship" title="Show relationship">
+        <span class="glyphicon glyphicon-tree-conifer"></span>
+      </button>
+    {% elif person == user.person %}
+      <br/><small>Tú</small>
+    {% endif %}
+  </h1>
+  <div class="row" style="margin-top: -10px; margin-bottom: 20px;">
+    <div class="col-md-6 col-sm-12">
+      {% if person.date_of_birth %}
+        <p class="pull-left">
+          <span class="text-primary">{% if person == user.person %}Naciste en {% else %}Nació:{% endif %}</span> {{ person.date_of_birth.year }}
+          {% if person.deceased and person.date_of_death %}
+            <span class="text-muted" style="margin: 0 5px;">&middot;</span>
+            <span class="text-primary">Murió:</span> {{ person.date_of_death.year }}
+          {% endif %}
+          {% if person.age %}
+            <span class="text-muted" style="margin: 0 5px;">&middot;</span>
+            <span class="text-primary">{% if person == user.person %}Tienes {% else %}Edad:{% endif %}</span>
+            {% if not person.is_age_exact %}~{% endif %}{{ person.age }} año{{ person.age|pluralize }} {% if person == user.person %}de edad.{% endif %}
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+    <div class="col-md-6 col-sm-12 text-right">
+      {% for tag in person.sorted_tags %}
+        <a href="{% url 'tag' tag.slug %}" class="label label-primary">{{ tag.name }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      {% if person.timeline|length > 0 %}
+        {% include 'people/fragments/timeline.html' %}
+      {% endif %}
+      <h4>Notas</h4>
+      {{ person.notes|safe }}
+      {% include 'people/fragments/photos.html' %}
+      {% include 'people/fragments/documents.html' %}
+    </div>
+    <div class="col-md-4">
+      {% include 'people/fragments/family.html' %}
+    </div>
+  </div>
+{% endblock %}
+
