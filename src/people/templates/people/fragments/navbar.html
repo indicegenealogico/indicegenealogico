@@ -7,7 +7,7 @@
       
       {% if user.is_authenticated %}
         <a class="navbar-brand" style="margin-top: -8px" href="{% url 'people.index' %}"><img src="{% static 'start/img/favicon/android-chrome-512x512.png' %}" alt="Company Logo" style="width:40px;" class="rounded-pill"></a>
-        <p class="navbar-text hidden-xs hidden-sm">Base de Datos con {{ list|length|intcomma }} people</p>
+        <p class="navbar-text hidden-xs hidden-sm">Base de Datos con {{ list|length|intcomma }} personas</p>
       {% else%}
         <a class="navbar-brand" href="{% url 'people.index' %}"><img src="{% static 'start/img/favicon/android-chrome-512x512.png' %}" alt="Company Logo" style="width:40px;" class="rounded-pill">    Indice Genealogico</a>
 
