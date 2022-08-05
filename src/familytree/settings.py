@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-d%i@nh^cvh7f*+k0b)gnz#r3s=1sib+k9+wgfdn__uw@nq7(!#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['indicegenealogico.com', 'www.indicegenealogico.com']
 
 
 # Application definition
