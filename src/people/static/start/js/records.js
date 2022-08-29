@@ -76,7 +76,7 @@ var recordset = [
 
 var projects = [
   '<tr><td>Vzla</td><td>Sucre</td><td>Carúpano</td><td>B</td><td>1920-1925</td></tr>',
-  '<tr><td>    </td><td>     </td><td>Tunapuy </td><td>M</td><td>1894-1994</td></tr>',
+  //'<tr><td>    </td><td>     </td><td>Tunapuy </td><td>M</td><td>1894-1994</td></tr>',
   '<tr><td>    </td><td>Dtto Federal</td><td>Caracas</td><td>B</td><td>1596-1616</td></tr>'
   // '<tr><td>Méx</td><td>SL Potosi</td><td>Bocas</td><td>D</td><td>1804-1876</td></tr>',
 ];
@@ -142,7 +142,7 @@ var localidades = [
 
 
   //Cambiar fecha de actualizacion
-  var up_date = "Jul 28, 2022";
+  var up_date = "Ago 28, 2022";
   var fecha = document.getElementById('update');
   fecha.innerHTML = up_date;
 
@@ -173,6 +173,7 @@ var localidades = [
 // ];
 
 var updates = [
+  '<li class="list-group-item"><small>08/28/2022 | Agregado Tomo ? de Tunapuy - Matrimonios 1847-1849 San Juan Bautista.</small></li>',
   '<li class="list-group-item"><small>07/28/2022 | Agregado Tomo 4 de Tunapuy - Bautizos 1895-1904 San Juan Bautista.</small></li>',
   '<li class="list-group-item"><small>06/19/2022 | Agregado Tomo 6 de Tunapuy - Bautizos 1903-1918 San Juan Bautista.</small></li>',
   '<li class="list-group-item"><small>06/18/2022 | Agregado Tomo 2 de Tunapuy - Bautizos, Matrimonios y Defunciones 1847-1850 San Juan Bautista.</small></li>',
