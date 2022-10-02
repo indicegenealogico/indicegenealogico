@@ -67,16 +67,18 @@ var recordset = [
   { id:'69', locat: '2947673', type: 'Matrimonio', rmsID: 'TH-1951-20470-16583-63', title: 'Mexquitic de Carmona - San Miguel 1778-1781', size: 317 },
   { id:'70', locat: '2106125', type: 'Defuncion', rmsID: 'M94D-BQF', title: 'Tunapuy - San Juan Bautista 1847-1850', size: 22 },
   { id:'71', locat: '2106125', type: 'Bautizo', rmsID: 'M94D-BQ2', title: 'Tunapuy - San Juan Bautista 1903-1918', size: 102 },
-  { id:'71', locat: '2106125', type: 'Bautizo', rmsID: 'M9C4-Q1Q', title: 'Tunapuy - San Juan Bautista 1895-1904', size: 154 },
+  { id:'72', locat: '2106125', type: 'Bautizo', rmsID: 'M9C4-Q1Q', title: 'Tunapuy - San Juan Bautista 1895-1904', size: 154 },
+  { id:'73', locat: '2110398', type: 'Bautizo', rmsID: 'M9H7-DK9', title: 'Irapa - San Jose 1918-1939', size: 110 },
+  { id:'74', locat: '2110398', type: 'Bautizo', rmsID: 'M9H7-DVB', title: 'Irapa - San Jose 1909-1911', size: 133 },
+  { id:'75', locat: '2106125', type: 'Bautizo', rmsID: 'M9CH-PXX', title: 'Tunapuy - San Juan Bautista 1918-1919', size: 0 },
 ];
-
 
 
 
 
 var projects = [
   '<tr><td>Vzla</td><td>Sucre</td><td>Carúpano</td><td>B</td><td>1920-1925</td></tr>',
-  //'<tr><td>    </td><td>     </td><td>Tunapuy </td><td>M</td><td>1894-1994</td></tr>',
+  '<tr><td>    </td><td>     </td><td>Tunapuy </td><td>B</td><td>1920-1937</td></tr>',
   '<tr><td>    </td><td>Dtto Federal</td><td>Caracas</td><td>B</td><td>1596-1616</td></tr>'
   // '<tr><td>Méx</td><td>SL Potosi</td><td>Bocas</td><td>D</td><td>1804-1876</td></tr>',
 ];
@@ -91,6 +93,7 @@ var localidades = [
             {name:'El Pilar', code:7},
             {name:'Guaraunos', code:22},
             {name:'Güiria', code:2},
+            {name:'Irapa', code:27},
             {name:'Macuro', code:21},
             {name:'Río Caribe', code:3},
             {name:'San José de Areocuar', code:5},
@@ -142,38 +145,16 @@ var localidades = [
 
 
   //Cambiar fecha de actualizacion
-  var up_date = "Ago 28, 2022";
+  var up_date = "Oct 1, 2022";
   var fecha = document.getElementById('update');
   fecha.innerHTML = up_date;
 
 
-//   var updates = [
-//   '<li class="list-group-item"><small>04/09/2022 | Finalizado <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJ4&imageIndex=0&singleView=true">Tomo #</a> de <a href="https://www.familysearch.org/es/wiki/Car%C3%BApano,_Sucre,_Venezuela_-_Genealog%C3%ADa">Carupano</a> - Bautizos 1890-1912 Santa Rosa.</small></li>',
-//   '<li class="list-group-item"><small>04/08/2022 | Agregado - <a https://www.familysearch.org/records/images/image-details?page=1&place=2947673&rmsId=TH-1951-20470-16583-63&imageIndex=0&singleView=true">Tomo 3</a> de <a href="https://www.familysearch.org/es/wiki/San_Luis_Potos%C3%AD,_M%C3%A9xico_-_Genealog%C3%ADa">Mexquitic</a> - Matrimonios 1778-17811 San Miguel.</small></li>',  
-//   '<li class="list-group-item"><small>04/05/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?place=6916037&page=1&rmsId=TH-1951-20446-38322&imageIndex=2&singleView=true">Tomo #</a> de Bocas, San Luis Potosi, Mexico - Defunciones 1804-1815 Parroquia San Geronimo.</small></li>',
-//   '<li class="list-group-item"><small>03/28/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?place=2109974&page=1&rmsId=M948-VC5&imageIndex=2&singleView=true">Tomo 1</a> de Guaraunos, Sucre, Venezuela - Bautizos 1892-1895 Parroquia Guarauno.</small></li>',
-//   '<li class="list-group-item"><small>03/19/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M99Y-74W&imageIndex=0&singleView=true">Tomo 2</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Defunciones 1850-1962 Inmaculada Concepción.</small></li>',
-//   '<li class="list-group-item"><small>02/28/2022 | Agregada funcionalidad para ver tabla en pantalla completa.</small></li>',
-//   '<li class="list-group-item"><small>02/26/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M99Y-747&imageIndex=0&singleView=true">Tomo 1</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Defunciones 1888-1941 Inmaculada Concepción.</small></li>',
-//   '<li class="list-group-item"><small>02/19/2022 | Agregado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2947673&rmsId=TH-1942-20420-25838-95&imageIndex=0&singleView=true">Libro de Imágenes</a> de <a href="https://www.familysearch.org/es/wiki/San_Luis_Potos%C3%AD,_M%C3%A9xico_-_Genealog%C3%ADa">Mexquitic</a> - Bautizos 1817-1821 San Miguel.</small></li>',
-//   '<li class="list-group-item"><small>02/19/2022 | Incluido - México en Índice Genealógico.</small></li>',
-//   '<li class="list-group-item"><small>02/13/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJD&imageIndex=0&singleView=true">Tomo 14</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Bautizos 1929-1936 Inmaculada Concepción.</small></li>',
-//   '<li class="list-group-item"><small>02/03/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJ8&imageIndex=0&singleView=true">Tomo 13</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Bautizos 1926-1929 Inmaculada Concepción.</small></li>',
-//   '<li class="list-group-item"><small>01/24/2022 | Agregada página con Lista de <a href="../nombres/">Nombres</a> en Índice Genealógico.</small></li>',
-//   '<li class="list-group-item"><small>01/23/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJZ&imageIndex=0&singleView=true">Tomo 12</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Bautizos 1920-1926 Inmaculada Concepción.</small></li>',
-//   '<li class="list-group-item"><small>01/12/2022 | Finalizado - <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJC&imageIndex=0&singleView=true">Tomo 11</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Bautizos 1917-1920 Inmaculada Concepción.</small></li>',
-//   '<li class="list-group-item"><small>01/11/2022 | Agregados - Bautizos 1902-1904 Santa Rosa - Carupano.</small></li>',
-//   '<li class="list-group-item"><small>01/03/2021 | Finalizado <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJH&imageIndex=0&singleView=true">Tomo 10</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Bautizos 1912-1914.</small></li>',
-//   '<li class="list-group-item"><small>01/01/2022 | Agregada página con Lista de <a href="../apellidos/">Apellidos</a> en Índice Genealógico.</small></li>',
-//   '<li class="list-group-item"><small>12/25/2021 | Finalizado <a href="https://www.familysearch.org/records/images/image-details?page=2&place=2423652&rmsId=M9SM-SJ4&imageIndex=0&singleView=true">Tomo 9</a> de <a href="https://www.familysearch.org/wiki/es/G%C3%BCiria,_Sucre,_Venezuela_-_Genealog%C3%ADa">Guiria</a> - Bautizos 1907-1912.</small></li>',
-//   '<li class="list-group-item"><small>12/24/2021 | Primeros 10.000 índices cambiados de imágenes a registros.</small></li>',
-//   '<li class="list-group-item"><small>12/13/2021 | Alcanzados los 50 mil índices.</small></li>',
-//   '<li class="list-group-item"><small>01/28/2021 | Se abre una página de <a href="https://www.facebook.com/IndiceGenealogico/">Facebook</a> para Índice Genealógico.</small></li>',
-//   '<li class="list-group-item"><small>10/25/2020 | Se da inicio al proyecto de Índice Genealógico.</small></li>', 
-// ];
 
 var updates = [
-  '<li class="list-group-item"><small>08/28/2022 | Agregado Tomo ? de Tunapuy - Matrimonios 1847-1849 San Juan Bautista.</small></li>',
+  '<li class="list-group-item"><small>10/01/2022 | Agregado Tomo # de Irapa - Bautizos 1909-1911 San José.</small></li>',
+  '<li class="list-group-item"><small>10/01/2022 | Agregado Tomo # de Tunapuy - Bautizos 1918-1919 San Juan Bautisna.</small></li>',
+  '<li class="list-group-item"><small>09/16/2022 | Agregado Tomo ? de Irapa - Bautizos 1918-1939 San José.</small></li>',
   '<li class="list-group-item"><small>07/28/2022 | Agregado Tomo 4 de Tunapuy - Bautizos 1895-1904 San Juan Bautista.</small></li>',
   '<li class="list-group-item"><small>06/19/2022 | Agregado Tomo 6 de Tunapuy - Bautizos 1903-1918 San Juan Bautista.</small></li>',
   '<li class="list-group-item"><small>06/18/2022 | Agregado Tomo 2 de Tunapuy - Bautizos, Matrimonios y Defunciones 1847-1850 San Juan Bautista.</small></li>',
